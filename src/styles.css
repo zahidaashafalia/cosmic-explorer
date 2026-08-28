@@ -5,17 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * Design system — "Digital Planetarium".
+ * Dark space theme: navy/black base, blue-violet glow, glassmorphism panels.
+ * All colors are oklch tokens defined on :root and mapped in @theme inline.
  */
 
 @theme inline {
@@ -26,6 +18,8 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -46,11 +40,7 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
+  --color-violet: var(--violet);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -62,74 +52,35 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
-}
-
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --radius: 0.875rem;
+  --background: oklch(0.14 0.035 268);
+  --foreground: oklch(0.97 0.01 250);
+  --card: oklch(0.2 0.04 268 / 55%);
+  --card-foreground: oklch(0.97 0.01 250);
+  --popover: oklch(0.19 0.04 268);
+  --popover-foreground: oklch(0.97 0.01 250);
+  --primary: oklch(0.72 0.16 245);
+  --primary-foreground: oklch(0.15 0.04 268);
+  --secondary: oklch(0.26 0.05 275);
+  --secondary-foreground: oklch(0.97 0.01 250);
+  --muted: oklch(0.26 0.045 272);
+  --muted-foreground: oklch(0.75 0.032 262);
+  --accent: oklch(0.28 0.06 285 / 60%);
+  --accent-foreground: oklch(0.97 0.01 250);
+  --destructive: oklch(0.62 0.21 22);
+  --destructive-foreground: oklch(0.97 0.01 250);
+  --border: oklch(0.99 0 0 / 14%);
+  --input: oklch(0.99 0 0 / 16%);
+  --ring: oklch(0.72 0.16 245);
+  --violet: oklch(0.62 0.2 298);
+  --sidebar: oklch(0.17 0.04 268);
+  --sidebar-foreground: oklch(0.97 0.01 250);
+  --sidebar-primary: oklch(0.72 0.16 245);
+  --sidebar-primary-foreground: oklch(0.15 0.04 268);
+  --sidebar-accent: oklch(0.26 0.05 275);
+  --sidebar-accent-foreground: oklch(0.97 0.01 250);
+  --sidebar-border: oklch(0.99 0 0 / 12%);
+  --sidebar-ring: oklch(0.72 0.16 245);
 }
 
 @layer base {
@@ -140,5 +91,405 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ---------- ambience ---------- */
+
+@utility starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.4px 1.4px at 12% 18%, oklch(1 0 0 / 70%), transparent 60%),
+    radial-gradient(1.2px 1.2px at 78% 12%, oklch(1 0 0 / 60%), transparent 60%),
+    radial-gradient(1px 1px at 34% 62%, oklch(1 0 0 / 50%), transparent 60%),
+    radial-gradient(1.6px 1.6px at 62% 44%, oklch(0.9 0.06 250 / 70%), transparent 60%),
+    radial-gradient(1px 1px at 88% 72%, oklch(1 0 0 / 45%), transparent 60%),
+    radial-gradient(1.2px 1.2px at 22% 86%, oklch(1 0 0 / 55%), transparent 60%),
+    radial-gradient(1px 1px at 52% 92%, oklch(1 0 0 / 40%), transparent 60%),
+    radial-gradient(1.3px 1.3px at 6% 48%, oklch(1 0 0 / 50%), transparent 60%);
+  background-size: 520px 520px;
+  animation: twinkle 6s ease-in-out infinite alternate;
+}
+
+@utility nebula {
+  position: fixed;
+  inset: -20%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      38rem 30rem at 12% 6%,
+      color-mix(in oklab, var(--violet) 26%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      42rem 34rem at 88% 30%,
+      color-mix(in oklab, var(--primary) 22%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      50rem 40rem at 50% 92%,
+      color-mix(in oklab, var(--violet) 18%, transparent),
+      transparent 72%
+    );
+  filter: blur(24px);
+  opacity: 0.85;
+}
+
+@utility mask-earth {
+  mask-image: radial-gradient(120% 100% at 50% 100%, #000 55%, transparent 92%);
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- typography & controls ---------- */
+
+@utility text-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility nav-link {
+  transition: color 0.25s ease;
+  &:hover {
+    color: var(--foreground);
+  }
+}
+
+@utility btn-space {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--primary) 45%, transparent);
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--primary) 30%, transparent),
+    color-mix(in oklab, var(--violet) 26%, transparent)
+  );
+  padding: 0.55rem 1.15rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--foreground);
+  backdrop-filter: blur(12px);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.35s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 34px color-mix(in oklab, var(--primary) 35%, transparent);
+  }
+}
+
+@utility btn-ghost-space {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--card) 70%, transparent);
+  padding: 0.55rem 1.15rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  backdrop-filter: blur(12px);
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+  &:hover {
+    color: var(--foreground);
+    border-color: color-mix(in oklab, var(--primary) 50%, transparent);
+    transform: translateY(-2px);
+  }
+}
+
+@utility btn-hero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: linear-gradient(180deg, oklch(0.99 0 0), oklch(0.88 0.02 255));
+  color: oklch(0.16 0.04 268);
+  padding: 0.85rem 2rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  box-shadow: 0 18px 45px color-mix(in oklab, var(--primary) 30%, transparent);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.35s ease;
+  &:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 22px 60px color-mix(in oklab, var(--primary) 45%, transparent);
+  }
+}
+
+@utility chip-space {
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--card) 60%, transparent);
+  padding: 0.4rem 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  transition:
+    color 0.25s ease,
+    box-shadow 0.3s ease,
+    transform 0.25s ease;
+  &:hover {
+    color: var(--foreground);
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px color-mix(in oklab, var(--planet-glow, #6ea8ff) 55%, transparent);
+  }
+}
+
+@utility glass-panel {
+  border-radius: calc(var(--radius) + 10px);
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    160deg,
+    oklch(0.99 0 0 / 10%),
+    color-mix(in oklab, var(--card) 85%, transparent)
+  );
+  backdrop-filter: blur(22px) saturate(140%);
+  box-shadow:
+    0 30px 70px oklch(0 0 0 / 45%),
+    inset 0 1px 0 oklch(1 0 0 / 12%);
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-panel-in {
+  animation: panel-in 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* ---------- orbit simulation ---------- */
+
+@utility orbit-stage {
+  position: relative;
+  width: min(88vw, 46rem);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  &[data-focused="true"] {
+    transform: scale(1.04);
+  }
+
+  &[data-paused="true"] .orbit-arm,
+  &[data-paused="true"] .planet-btn {
+    animation-play-state: paused;
+  }
+}
+
+@utility sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 999px;
+  background: radial-gradient(circle at 40% 35%, #fff7d6, #ffca4a 45%, #ff8a1f 75%, #e2560d);
+  box-shadow:
+    0 0 40px #ffb43f88,
+    0 0 120px #ff8a2166,
+    0 0 220px #7a3bff44;
+  animation: sun-pulse 5s ease-in-out infinite;
+}
+
+@keyframes sun-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 40px #ffb43f88,
+      0 0 120px #ff8a2166,
+      0 0 220px #7a3bff44;
+  }
+  50% {
+    box-shadow:
+      0 0 60px #ffc75faa,
+      0 0 160px #ff8a2188,
+      0 0 260px #7a3bff55;
+  }
+}
+
+@utility sun-label {
+  position: absolute;
+  top: calc(50% + 7.5%);
+  left: 50%;
+  translate: -50% 0;
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  border-radius: 999px;
+  border: 1px solid oklch(1 0 0 / 8%);
+}
+
+@utility orbit-arm {
+  position: absolute;
+  inset: 0;
+  animation-name: spin;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes spin-back {
+  to {
+    rotate: -360deg;
+  }
+}
+
+@utility planet-btn {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  translate: -50% -50%;
+  display: grid;
+  place-items: center;
+  animation-name: spin-back;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  cursor: pointer;
+  transition:
+    filter 0.5s ease,
+    opacity 0.5s ease;
+
+  & .planet-name {
+    position: absolute;
+    top: calc(50% + var(--planet-size) / 2 + 0.5rem);
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--muted-foreground);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover .planet-name,
+  &[data-active="true"] .planet-name {
+    opacity: 1;
+    color: var(--foreground);
+  }
+
+  &:hover .planet-body {
+    scale: 1.25;
+    box-shadow: 0 0 26px color-mix(in oklab, var(--planet-glow) 85%, transparent);
+  }
+
+  &[data-active="true"] {
+    z-index: 5;
+  }
+
+  &[data-active="true"] .planet-body {
+    scale: 1.6;
+    box-shadow:
+      0 0 30px color-mix(in oklab, var(--planet-glow) 90%, transparent),
+      0 0 70px color-mix(in oklab, var(--planet-glow) 55%, transparent);
+  }
+
+  &[data-dim="true"] {
+    opacity: 0.32;
+    filter: saturate(0.5);
+  }
+}
+
+@utility planet-body {
+  position: relative;
+  display: block;
+  width: var(--planet-size);
+  height: var(--planet-size);
+  border-radius: 999px;
+  background: var(--planet-surface);
+  box-shadow:
+    0 0 14px color-mix(in oklab, var(--planet-glow) 60%, transparent),
+    inset -3px -3px 8px oklch(0 0 0 / 55%);
+  transition:
+    scale 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.5s ease;
+}
+
+@utility planet-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 210%;
+  height: 210%;
+  translate: -50% -50%;
+  rotate: x 74deg;
+  border-radius: 999px;
+  border: 2px solid oklch(0.9 0.05 90 / 55%);
+  box-shadow: 0 0 12px oklch(0.9 0.05 90 / 25%);
+}
+
+@media (max-width: 640px) {
+  .orbit-stage {
+    width: 94vw;
+  }
+  .planet-btn .planet-name {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-arm,
+  .planet-btn,
+  .starfield,
+  .sun {
+    animation: none !important;
   }
 }
